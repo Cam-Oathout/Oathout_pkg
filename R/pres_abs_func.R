@@ -9,6 +9,7 @@
 #'
 #'@examples
 #'pres.abs.plot(df, x, y, col)
+#'
 pres.abs.plot <- function(data, x, y, col){
   plot <- ggplot(data, aes({{x}}, {{y}}, fill = {{col}})) +
            geom_tile(show.legend = TRUE)
