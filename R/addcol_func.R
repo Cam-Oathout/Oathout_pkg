@@ -6,8 +6,6 @@
 #' 
 #' @return if new count column is added the tibble/df should be returned with one more column number than your original data frame
 #' 
-#' @examples 
-#' addcol(df, "column1", "column5")
 #' 
 #' 
 addcol <- function(data, col1, col2){
