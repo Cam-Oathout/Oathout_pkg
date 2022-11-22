@@ -7,8 +7,7 @@
 #' 
 #' @return matrix showing species counts for different habitats or other relevent differences  
 #' 
-#' @examples 
-#' NMDSmatrix(data, col1, col2, col3)
+#' 
 #' 
 #'  
 NMDSmatrix <- function(data, col1, col2, col3) {
