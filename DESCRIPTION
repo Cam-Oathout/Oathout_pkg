@@ -1,0 +1,17 @@
+Package: eDNAproject
+Title: Functions for Environmental DNA Analysis
+Version: 0.0.0.9000
+Authors@R: 
+    person("Camden", "Oathout", , "camden.oathout@selu.edu", role = c("aut", "cre"))
+Description: This R package helps user analyze environmental DNA presence absence data. The package has functions for linear models, ANOVA, and NMDS analyses. With this package you can create plots showing which samples and sample locations have certain species you detected. You can also compare community structures using the NMDS analysis function. 
+License: MIT + file LICENSE
+Depends: 
+  R (>= 2.10), vegan
+Imports:
+  tidyverse
+Suggests: 
+  knitr, rmarkdown
+VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
