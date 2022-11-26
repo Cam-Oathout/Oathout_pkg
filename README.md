@@ -39,6 +39,11 @@ To download your data for this package click on the upload button in the 'Files'
 eDNAdata <- read_csv("/cloud/project/Data/eDNA_data.csv")
 ```
 
+```{r}
+gs4_deauth()
+eDNAdata <- read_sheet("https://docs.google.com/spreadsheets/d/1lMp2A8f9x1RYD1ukTu2qg5BzL9FkPLUELQqxUSuQghI/edit#gid=0")
+```
+
 ## Function in This Package and How to Use Them
 
 There are four functions unique to this package. This section of the tutorial will go through how to use each one of them and why you might use it.
