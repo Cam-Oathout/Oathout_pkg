@@ -13,17 +13,25 @@ This R package helps user analyze environmental DNA presence absence data. The p
 
 To install the R package eDNAproject enter the following code into your console. This package will include functions from vegan and tidyverse as well as functions unique to this package.
 
-```r
+```{r}
+install.packages("remotes")
+library(remotes)
+
+install.packages("googlesheets4")
+library(googlesheets4)
+
+remotes::install_github("Cam-Oathout/Oathout_pkg")
 install.packages("eDNAproject")
 library(eDNAproject)
 ```
 
 #Downloading Data for Package
 
-To download your data for this package click on the upload button in the 'Files' tab of your R window. Select **.csv file** containing your eDNA data.  Once your data are in your 'Files' tab it's now time to make it usable in R. Insert the following code into your console. Modify it to match the name of your file. If you wish to follow this tutorial using the same data use the following link [https://github.com/Cam-Oathout/Oathout_pkg/blob/master/Data/eDNA_data.csv]
+To download your data for this package click on the upload button in the 'Files' tab of your R window. Select **.csv file** containing your eDNA data.  Once your data are in your 'Files' tab it's now time to make it usable in R. Insert the following code into your console. Modify it to match the name of your file. If you wish to follow this tutorial using the same data use the following code:
 
 ```{r}
-eDNAdata <- read_csv("/cloud/project/Data/eDNA_data.csv")
+gs4_deauth()
+eDNAdata <- read_sheet("https://docs.google.com/spreadsheets/d/1lMp2A8f9x1RYD1ukTu2qg5BzL9FkPLUELQqxUSuQghI/edit#gid=0")
 ```
 
 #Function in This Package and How to Use Them
