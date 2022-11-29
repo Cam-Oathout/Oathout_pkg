@@ -72,7 +72,7 @@
                         <h4 data-toc-skip class="author">Camden
 Oathout</h4>
             
-            <h4 data-toc-skip class="date">2022-11-25</h4>
+            <h4 data-toc-skip class="date">2022-11-29</h4>
       
       
       <div class="hidden name"><code>PackageTutorial.Rmd</code></div>
@@ -93,7 +93,14 @@ NMDS Matrix function.</p>
 your console. This package will include functions from vegan and
 tidyverse as well as functions unique to this package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"eDNAproject"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"googlesheets4"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Cam-Oathout/Oathout_pkg"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"eDNAproject"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">eDNAproject</span><span class="op">)</span></span></code></pre></div>
 <p>#Downloading Data for Package</p>
 <p>To download your data for this package click on the upload button in
@@ -101,22 +108,80 @@ the ‘Files’ tab of your R window. Select <strong>.csv file</strong>
 containing your eDNA data. Once your data are in your ‘Files’ tab it’s
 now time to make it usable in R. Insert the following code into your
 console. Modify it to match the name of your file. If you wish to follow
-this tutorial using the same data use the following link [<a href="https://github.com/Cam-Oathout/Oathout_pkg/blob/master/Data/eDNA_data.csv" class="external-link uri">https://github.com/Cam-Oathout/Oathout_pkg/blob/master/Data/eDNA_data.csv</a>]</p>
+this tutorial using the same data use the following code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">read_csv</span><span class="op">(</span><span class="st">"/project/eDNA_data.csv"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html" class="external-link">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">eDNAdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1lMp2A8f9x1RYD1ukTu2qg5BzL9FkPLUELQqxUSuQghI/edit#gid=0"</span><span class="op">)</span></span></code></pre></div>
 <p>#Function in This Package and How to Use Them</p>
 <p>There are four functions unique to this package. This section of the
 tutorial will go through how to use each one of them and why you might
 use it.</p>
-<p>##Data Cleaning The first function is a data cleaning function,
-specifically the goal is to remove any NA values from the data set.
-Removing NA values manually before uploading a data set to R can be time
-consuming and if you don’t remove all NA values any mathematical
-calculations you want to do later in your analysis may be disrupted by
-these 0 values.</p>
+<p>##Data Cleaning</p>
+<p>The first function is a data cleaning function, specifically the goal
+is to remove any NA values from the data set. Removing NA values
+manually before uploading a data set to R can be time consuming and if
+you don’t remove all NA values any mathematical calculations you want to
+do later in your analysis may be disrupted by these 0 values.</p>
 <p>In this package our data clean function is called
-<strong>cleandata</strong>. It take a file path argument to where you
+<strong>cleandata()</strong>. It takes a file path argument to where you
 have uploaded your data set.</p>
+<p>Enter the following code into your R console.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cleandata.html">cleandata</a></span><span class="op">(</span><span class="st">"/cloud/project/Data/eDNA_data.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>If everything worked properly, R should return the cleaned data
+set.</p>
+<p>##Creating New Columns</p>
+<p>The second function adds a new column to your data set based off of
+data you already have. Let’s say you have individual species counts for
+each study region and you want to know how many total species you have
+for that region. This function allows you to select a range of columns
+and create a new column based on the sum in those column ranges for each
+study region.</p>
+<p>In this package, this function is known as <strong>addcol()</strong>.
+It takes the object you named your data, the name of the first column
+where you want your count to begin, and the name of the second column
+where you want your count to end.</p>
+<p>Enter the following code into your R console.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">eDNAdata2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/addcol.html">addcol</a></span><span class="op">(</span><span class="va">eDNAdata</span>, <span class="st">"Alosa_sp"</span>, <span class="st">"Trinectes_maculatus"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">eDNAdata2</span></span></code></pre></div>
+<p>If the everything worked properly R should return the data set and
+you should see one extra column added.</p>
+<p>##Presence Absence Visualization</p>
+<p>An important aspect of analyzing eDNA data is detecting where a
+species is present or where a species is absent. You could look through
+your 1’s and 0’s data set to find out which sample locations have
+different species or you can visualize it.</p>
+<p>In this package visualizing presence/absence data is accomplished
+through the function <strong>pres.abs.plot()</strong>. This function
+takes similar arguments to ggplot. You will need the data object, a
+column name for the x-axis, a column name for the y-axis, and a species
+column name.</p>
+<p>Enter the following code into your R console.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pres.abs.plot.html">pres.abs.plot</a></span><span class="op">(</span><span class="va">eDNAdata</span>, <span class="va">Year</span>, <span class="va">Reef_Location</span>, <span class="va">Anguilla_rostrata</span><span class="op">)</span></span></code></pre></div>
+<p>If everything worked properly R should return a plot. Species
+presence is represented in light blue and species absence is represented
+in dark blue.</p>
+<p>##Preparing your Data for an NMDS analysis</p>
+<p>An NMDS is a non-metric multi-dimensional scaling. This type of
+analysis allows us to look at how many different variables may impact
+our community composition. The goal of this function is to set up your
+data in a way that can be used for the NMDS analysis function in the
+package vegan.</p>
+<p>In this package, setting up the NMDS matrix is accomplished using the
+function <strong>NMDSmatrix()</strong>. To fulfill this function’s
+arguments you will need the object of the data set containing total
+species counts, the column name of your locations of interest, the
+column name of a variable you want to see the effect of, and the column
+name of your total species counts.</p>
+<p>Enter the following code into your R console.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/NMDSmatrix.html">NMDSmatrix</a></span><span class="op">(</span><span class="va">eDNAdata2</span>, <span class="va">Reef_Location</span>, <span class="va">Reef_Material</span>, <span class="va">n</span><span class="op">)</span></span></code></pre></div>
+<p>If everything worked properly you should see a data matrix with your
+desired locations and variables, with the species counts in each column.
+Anythings that popped up as a zero should be reported as NA.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

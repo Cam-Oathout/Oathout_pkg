@@ -13,7 +13,7 @@ This R package helps user analyze environmental DNA presence absence data. The p
 
 To install the R package eDNAproject enter the following code into your console. This package will include functions from vegan and tidyverse as well as functions unique to this package.
 
-```{r}
+```{r, eval=FALSE}
 install.packages("remotes")
 library(remotes)
 
@@ -29,7 +29,7 @@ library(eDNAproject)
 
 To download your data for this package click on the upload button in the 'Files' tab of your R window. Select **.csv file** containing your eDNA data.  Once your data are in your 'Files' tab it's now time to make it usable in R. Insert the following code into your console. Modify it to match the name of your file. If you wish to follow this tutorial using the same data use the following code:
 
-```{r}
+```{r, eval=FALSE, include=TRUE}
 gs4_deauth()
 eDNAdata <- read_sheet("https://docs.google.com/spreadsheets/d/1lMp2A8f9x1RYD1ukTu2qg5BzL9FkPLUELQqxUSuQghI/edit#gid=0")
 ```
@@ -46,7 +46,7 @@ In this package our data clean function is called **cleandata()**. It takes a fi
 
 Enter the following code into your R console.
 
-```{r}
+```{r, eval=FALSE}
 cleandata("/cloud/project/Data/eDNA_data.csv")
 ```
 
@@ -60,7 +60,7 @@ In this package, this function is known as **addcol()**. It takes the object you
 
 Enter the following code into your R console.
 
-```{r}
+```{r, eval=FALSE}
 eDNAdata2 <- addcol(eDNAdata, "Alosa_sp", "Trinectes_maculatus")
 
 eDNAdata2
@@ -75,7 +75,7 @@ In this package visualizing presence/absence data is accomplished through the fu
 
 Enter the following code into your R console.
 
-```{r}
+```{r, eval=FALSE}
 pres.abs.plot(eDNAdata, Year, Reef_Location, Anguilla_rostrata)
 ```
 
@@ -89,7 +89,7 @@ In this package, setting up the NMDS matrix is accomplished using the function *
 
 Enter the following code into your R console.
 
-```{r}
+```{r, eval=FALSE}
 NMDSmatrix(eDNAdata2, Reef_Location, Reef_Material, n)
 ```
 
