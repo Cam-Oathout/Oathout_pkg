@@ -10,7 +10,7 @@ cleandata(filepath)
 \item{filepath}{where your data file is stored in R}
 }
 \value{
-if all NAs are removed then the last line in the console should be \link{1} False, if NAs are not removed it will be \link{1} True
+if all NAs are removed then the last line in the console should be False, if NAs are not removed it will be True
 }
 \description{
 Data Clean-Up Function removes NA values in the csv data file
