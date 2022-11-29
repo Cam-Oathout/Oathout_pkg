@@ -7,8 +7,6 @@
 #'
 #'@return ggplot showing presence absence of a species in the data frame
 #'
-#'@examples
-#'pres.abs.plot(df, x, y, col)
 #'
 pres.abs.plot <- function(data, x, y, col){
   plot <- ggplot(data, aes({{x}}, {{y}}, fill = {{col}})) +

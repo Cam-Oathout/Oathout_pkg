@@ -79,6 +79,8 @@
 </h2>
 <p>To download your data for this package click on the upload button in the ‘Files’ tab of your R window. Select <strong>.csv file</strong> containing your eDNA data. Once your data are in your ‘Files’ tab it’s now time to make it usable in R. Insert the following code into your console. Modify it to match the name of your file. If you wish to follow this tutorial using the same data use the following link [<a href="https://github.com/Cam-Oathout/Oathout_pkg/blob/master/Data/eDNA_data.csv" class="external-link uri">https://github.com/Cam-Oathout/Oathout_pkg/blob/master/Data/eDNA_data.csv</a>]</p>
 <pre class="{r}"><code><span><span class="va">eDNAdata</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/cloud/project/Data/eDNA_data.csv"</span><span class="op">)</span></span></code></pre>
+<pre class="{r}"><code><span><span class="fu">gs4_deauth</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">eDNAdata</span> <span class="op">&lt;-</span> <span class="fu">read_sheet</span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1lMp2A8f9x1RYD1ukTu2qg5BzL9FkPLUELQqxUSuQghI/edit#gid=0"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="function-in-this-package-and-how-to-use-them">Function in This Package and How to Use Them<a class="anchor" aria-label="anchor" href="#function-in-this-package-and-how-to-use-them"></a>

@@ -21,7 +21,3 @@ ggplot showing presence absence of a species in the data frame
 \description{
 Presence Absence Function: Visualizing the presence or absence of a species based on other parameters in the data set.
 }
-\examples{
-pres.abs.plot(df, x, y, col)
-
-}
