@@ -7,12 +7,12 @@
 #' 
 #' @return matrix showing species counts for different habitats or other relevent differences  
 #' 
-#' 
+#' @export
 #' 
 #'  
 NMDSmatrix <- function(data, col1, col2, col3) {
      speciesmatrix <- data %>% 
-           select({{col1}}, {{col2}}, {{col3}}) %>% 
+           dplyr::select({{col1}}, {{col2}}, {{col3}}) %>% 
            group_by({{col2}}, {{col3}}) %>% 
            spread({{col2}}, {{col3}}) %>% 
            data.matrix(rownames.force = data$col2)

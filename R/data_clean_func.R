@@ -3,6 +3,7 @@
 #' 
 #'@return if all NAs are removed then the last line in the console should be False, if NAs are not removed it will be True
 #'
+#'@export
 #'
 cleandata <- function(filepath){
   data_raw <- read_csv(filepath)

@@ -6,7 +6,7 @@
 #' 
 #' @return if new count column is added the tibble/df should be returned with one more column number than your original data frame
 #' 
-#' 
+#' @export
 #' 
 addcol <- function(data, col1, col2){
   check1 <- ncol(data)
