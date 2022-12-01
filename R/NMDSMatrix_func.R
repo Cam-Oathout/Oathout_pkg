@@ -12,7 +12,7 @@
 #'  
 NMDSmatrix <- function(data, col1, col2, col3) {
      speciesmatrix <- data %>% 
-           dplyr::select({{col1}}, {{col2}}, {{col3}}) %>% 
+           select({{col1}}, {{col2}}, {{col3}}) %>% 
            group_by({{col2}}, {{col3}}) %>% 
            spread({{col2}}, {{col3}}) %>% 
            data.matrix(rownames.force = data$col2)
