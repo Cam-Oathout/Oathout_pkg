@@ -10,7 +10,7 @@
 #' 
 addcol <- function(data, col1, col2){
   check1 <- ncol(data)
-  newcol <- data %>% rowwise() %>% mutate(n = sum(c_across(col1:col2)))
+  newcol <- data %>% rowwise() %>% mutate(n = sum(c_across(cols = col1:col2)))
   check2 <- ncol(newcol)
   check2 == check1+1
   return(newcol)
